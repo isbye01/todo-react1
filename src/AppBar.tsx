@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Avatar from '@mui/material/Avatar'
 import { Stack, Tooltip } from '@mui/material'
+import SwitchTheme from './Switch.tsx'
 
 const ButtonAppBar = () => {
 	return (
-		<Box sx={{ flexGrow: 1 }}>
+		<Box sx={{ flexGrow: 1 }} marginBottom={5}>
 			<AppBar position="fixed">
 				<Toolbar>
 					<IconButton
@@ -30,6 +31,7 @@ const ButtonAppBar = () => {
 							About
 						</Typography>
 					</Stack>
+					<SwitchTheme />
 					<Button color="inherit">Login</Button>
 					<Tooltip title="User">
 						<Avatar src={''} />
