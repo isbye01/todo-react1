@@ -9,7 +9,10 @@ import Avatar from '@mui/material/Avatar'
 import { Stack, Tooltip } from '@mui/material'
 import SwitchTheme from './Switch.tsx'
 
-const ButtonAppBar = () => {
+type Props = { access_token?: string; username?: string }
+
+const ButtonAppBar = (props: Props) => {
+	const { username } = props
 	return (
 		<Box sx={{ flexGrow: 1 }} marginBottom={5}>
 			<AppBar position="fixed">
@@ -24,18 +27,26 @@ const ButtonAppBar = () => {
 						<MenuIcon />
 					</IconButton>
 					<Stack direction={'row'} spacing={2} style={{ flexGrow: 1 }}>
-						<Typography variant="h6" component="div">
-							Todo's
-						</Typography>
+						{username && (
+							<Typography variant="h6" component="div">
+								Todo's
+							</Typography>
+						)}
+
 						<Typography variant="h6" component="div">
 							About
 						</Typography>
 					</Stack>
 					<SwitchTheme />
-					<Button color="inherit">Login</Button>
-					<Tooltip title="User">
-						<Avatar src={''} />
-					</Tooltip>
+					{username ? (
+						<Tooltip title="User">
+							<Avatar src={''} alt={username}>
+								{username[0]}
+							</Avatar>
+						</Tooltip>
+					) : (
+						<Button color="inherit">Login</Button>
+					)}
 				</Toolbar>
 			</AppBar>
 		</Box>
